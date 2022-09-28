@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <title>Titulo!</title>
+  </head>
+  <body>
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                <div class="col-3">
+                    <label>Insira o nome: </label>
+                    <input type="text" name="" id="txtNum1" class="form-control">
+                    <button onclick="saveAndUpLista()" class="btn btn-success">Salvar Listagem</button>
+                </div>
+                <div class="col-3">
+                    <label>Insira sua pesquisa: </label>
+                    <input type="text" name="" id="txtList" clas="form-control" onkeyup="searchLista()">
+                </div>
+
+                <div class="col-12">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                              <th scope="col">Nome</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tbody">
+                            
+                          </tbody>
+                      </table>
+                </div>
+
+                <button onclick="clearLista()" class="btn btn-success">Limpar Listagem</button>
+              </div>
+          </div>
+      </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        var tbody = document.getElementById('tbody');
+        var nomes = [];
+
+
+        function sergioRefatora(values) {
+            let tr = document.createElement('tr');
+            let td1 = document.createElement('td');
+            td1.appendChild(document.createTextNode('Nome: ' + values));
+            tr.appendChild(td1);
+
+            tbody.appendChild(tr);
+        }
+
+        function saveAndUpLista() {
+            let getNames = document.getElementById('txtNum1').value;
+            nomes.push(getNames);
+            sergioRefatora(getNames);
+        }
+
+        function clearLista() {
+            nomes = [];
+            tbody.innerHTML = '';
+        }
+
+        function searchLista() {
+            tbody.innerHTML = '';
+            nomes.filter(get => get.startsWith(document.getElementById('txtList').value)).forEach(a => { sergioRefatora(a); })
+        }
+
+
+
+        let carros = ["Monza", "Fusca", "Opala"]; 
+        
+        console.log("Array Inicial: " + carros);
+        console.log("Array rem ultimo elem: " + carros.pop());
+        console.log("Array rem primeiro elem: " + carros.shift());
+
+        console.log("Array ultimo elem sobrado: " + carros);
+
+        console.log("Array insert elem final: " + carros.push("Road King"));
+        
+        console.log("Array insert elem inicio: " + carros.unshift("Opala"));
+        console.log("Array ultimo elem sobrado: " + carros);
+
+        console.log("Array " + carros.join(" | "));
+
+        console.log("Array Index: " + carros[0]);
+
+        console.log("Array indexOf: " + carros.indexOf('Opala'));
+
+        console.log("Array filter: " + carros.filter(get => get.startsWith('O')));
+
+        console.log("Array find: " + carros.find(get => get.startsWith('F')));
+
+
+
+    </script>
+  </body>
+</html>
